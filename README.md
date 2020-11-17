@@ -4,6 +4,8 @@ This repository should contain all you need to get set up with the Owl Insurance
 
 This is designed to be deployed as a Firebase function, but it should be easy enough to lift'n'shift to your serverless environment of choice.
 
+The star of the show here is the [Twilio CCAI Fulfillment Tools](https://www.npmjs.com/package/twilio-ccai-fulfillment-tools) dependency, that handles the heavy-lifting in terms of creating contexts and correct Dynamic Context Panel sections.
+
 ## Demo Video
 
 To see this demo in action, please see the following video: _coming soon!_
