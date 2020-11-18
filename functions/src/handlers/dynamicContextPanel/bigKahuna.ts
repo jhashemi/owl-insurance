@@ -13,7 +13,7 @@ import {
   SIZES,
 } from "twilio-ccai-fulfillment-tools";
 
-import createHandler from "../dfHelpers/createHandler";
+import createHandler from "../../dfHelpers/createHandler";
 
 enum SECTIONS {
   PROFILE,
@@ -37,7 +37,7 @@ enum SECTIONS {
 export const createBigKahunaHandler = (
   dfRequest: GoogleCloudDialogflowV2WebhookRequest
 ) =>
-  createHandler(dfRequest, () =>
+  createHandler(dfRequest, () => [
     createDynamicContextPanelMap({
       [SECTIONS.PROFILE]: createProfile({
         position: SECTIONS.PROFILE,
@@ -132,5 +132,5 @@ export const createBigKahunaHandler = (
         title: "This example is big!",
         text: "Destination: Punta Cana",
       }),
-    })
-  );
+    }),
+  ]);

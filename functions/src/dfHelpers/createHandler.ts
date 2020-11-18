@@ -1,28 +1,21 @@
-import { GoogleCloudDialogflowV2WebhookRequest } from "actions-on-google";
-import { WebhookClient } from "dialogflow-fulfillment";
 import {
-  TMapContext,
-  TListContext,
-  TDocumentContext,
-} from "twilio-ccai-fulfillment-tools";
+  GoogleCloudDialogflowV2Context,
+  GoogleCloudDialogflowV2WebhookRequest,
+} from "actions-on-google";
+import { WebhookClient } from "dialogflow-fulfillment";
 
 export const createHandler = (
   dfRequest: GoogleCloudDialogflowV2WebhookRequest,
-  createContext: () =>
-    | TMapContext
-    | TListContext
-    | TDocumentContext
-    | undefined,
-  createTextResponse?: () => string | undefined
+  createContexts?: () => GoogleCloudDialogflowV2Context[],
+  textResponse?: string
 ) => (agent: WebhookClient): void => {
   agent.add(
-    (createTextResponse
-      ? createTextResponse()
-      : dfRequest.queryResult?.fulfillmentText) || "No Fulfillment Text Set"
+    textResponse ??
+      (dfRequest.queryResult?.fulfillmentText || "No Fulfillment Text Set")
   );
-  const context = createContext();
-  if (context) {
-    agent.setContext(context);
+
+  if (createContexts) {
+    createContexts().forEach((context) => agent.setContext(context));
   }
 };
 

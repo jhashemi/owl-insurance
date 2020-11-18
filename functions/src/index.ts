@@ -7,24 +7,30 @@ import { https, logger } from "firebase-functions";
 //   createHelpHandler,
 //   // createWelcomeHandler,
 //   createContextAwareWelcomeHandler,
-// } from "./demoHandlers/document";
+//   createDadJokeHandler,
+// } from "./handlers/dynamicContextPanel/document";
 
 // LIST
 // import {
 //   createHelpHandler,
 //   // createWelcomeHandler,
 //   createContextAwareWelcomeHandler,
-// } from "./demoHandlers/list";
+//   createDadJokeHandler,
+// } from "./handlers/dynamicContextPanel/list";
 
 // MAP
 import {
   createHelpHandler,
   // createWelcomeHandler,
   createContextAwareWelcomeHandler,
-} from "./demoHandlers/map";
+  createDadJokeHandler,
+} from "./handlers/dynamicContextPanel/map";
 
 // THE BIG ONE
-import { createBigKahunaHandler } from "./demoHandlers/bigKahuna";
+import { createBigKahunaHandler } from "./handlers/dynamicContextPanel/bigKahuna";
+
+// OTHER HANDLERS
+import { createEscalateOrRejectHandler } from "./handlers/standard/escalateOrReject";
 
 export const dialogflowFirebaseFulfillment = https.onRequest(
   async (request, response) => {
@@ -40,9 +46,11 @@ export const dialogflowFirebaseFulfillment = https.onRequest(
       "Default Welcome Intent",
       createContextAwareWelcomeHandler(dfRequest)
     );
-    intentMap.set("help", createHelpHandler(dfRequest));
     intentMap.set("name-given", createContextAwareWelcomeHandler(dfRequest));
+    intentMap.set("help", createHelpHandler(dfRequest));
     intentMap.set("big-kahuna", createBigKahunaHandler(dfRequest));
+    intentMap.set("dad-joke", createDadJokeHandler(dfRequest));
+    intentMap.set("speak-to-agent", createEscalateOrRejectHandler(dfRequest));
     try {
       await agent.handleRequest(intentMap);
     } catch (error) {
