@@ -6,10 +6,6 @@ This is designed to be deployed as a Firebase function, but it should be easy en
 
 The star of the show here is the [Twilio CCAI Fulfillment Tools](https://www.npmjs.com/package/twilio-ccai-fulfillment-tools) dependency, that handles the heavy-lifting in terms of creating contexts and correct Dynamic Context Panel sections.
 
-## Demo Video
-
-To see this demo in action, please see the following video: _coming soon!_
-
 ## Setup
 
 Run `npm ci` inside the [functions](functions) folder. That should give you all the dependencies you need to get started!
