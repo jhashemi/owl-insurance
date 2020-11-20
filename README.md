@@ -10,7 +10,7 @@ The star of the show here is the [Twilio CCAI Fulfillment Tools](https://www.npm
 
 To be able to use the code in this repository, you must have a Dialogflow ES Agent, and have a Twilio Flex environment configured with Twilio Contact Centre AI Integration.
 
-If you want to use the Agent Assist capability, then you must additionally ensure your Dialogflow ES Agent has been whitelisted with the Agent Assist capability.
+If you want to use the Agent Assist capability, then you must additionally ensure your Dialogflow ES Agent has been whitelisted to use CCAI.
 
 To get these setup, please reach out to your Twilio representative to begin your journey.
 
