@@ -6,6 +6,12 @@ This is designed to be deployed as a Firebase function, but it should be easy en
 
 The star of the show here is the [Twilio CCAI Fulfillment Tools](https://www.npmjs.com/package/twilio-ccai-fulfillment-tools) dependency, that handles the heavy-lifting in terms of creating contexts and correct Dynamic Context Panel sections.
 
+## Pre-requisites
+
+To be able to use the code in this repository, you must have an Agent-Assist capable Dialogflow ES Agent, and have a Twilio Flex environment configured with Twilio Contact Centre AI Integration.
+
+To get these setup, please reach out to your Twilio representative to begin your journey.
+
 ## Setup
 
 Run `npm ci` inside the [functions](functions) folder. That should give you all the dependencies you need to get started!
